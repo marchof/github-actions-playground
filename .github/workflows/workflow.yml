@@ -1,0 +1,20 @@
+name: Docker Parameters
+
+on:
+  push:
+    branches:
+      - docker-params
+
+jobs:
+
+  docker:
+    runs-on: ubuntu-latest
+
+    name: Build and Run Docker Image
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and Run Docker Image
+      run: |
+        docker build -t testimage docker
+        docker run testimage
