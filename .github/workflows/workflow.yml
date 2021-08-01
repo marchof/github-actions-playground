@@ -28,5 +28,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build and Run Docker Image
       run: |
-        docker build --build-arg "EXTRA_PARAMS=${{ matrix.scenario.params }}" -t testimage docker
+        docker build --build-arg "EXTRAPARAMS=${{ matrix.scenario.params }}" -t testimage docker
         docker run testimage

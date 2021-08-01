@@ -2,7 +2,6 @@ FROM ubuntu:18.04
 
 ARG EXTRAPARAMS="Default value"
 
-
 COPY printargs.sh /root/printargs.sh
 RUN chmod +x /root/printargs.sh
 
