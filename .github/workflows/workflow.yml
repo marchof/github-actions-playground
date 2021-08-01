@@ -1,0 +1,20 @@
+name: Matrix Job Names
+
+on:
+  push:
+    branches:
+      - matrix-job-names
+
+jobs:
+
+  matrix-job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        row: [1, 2, 3]
+        column: [A, B, C]
+
+    name: Cell ${{ matrix.column }}-${{ matrix.row }}
+
+    steps:
+    - run: echo Cell ${{ matrix.column }}-${{ matrix.row }}
