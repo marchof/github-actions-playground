@@ -8,13 +8,25 @@ on:
 jobs:
 
   docker:
+  
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - name: No parameter
+            params: ''
+          - name: One parameter
+            params: 'World'
+          - name: Multiple parameters
+            params: 'World and Universe'
+  
     runs-on: ubuntu-latest
 
-    name: Build and Run Docker Image
+    name: ${{ matrix.scenario.name }}
 
     steps:
     - uses: actions/checkout@v2
     - name: Build and Run Docker Image
       run: |
-        docker build -t testimage docker
+        docker build --build-arg "EXTRA_PARAMS=${{ matrix.scenario.params }}" -t testimage docker
         docker run testimage
