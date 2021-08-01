@@ -1,3 +1,6 @@
 FROM ubuntu:18.04
 
-ENTRYPOINT [ "echo", "Hello!" ]
+COPY printargs.sh /root/printargs.sh
+RUN chmod +x /root/printargs.sh
+
+ENTRYPOINT [ "/root/printargs.sh", "Hello", "World!", "Hello Universe!" ]
