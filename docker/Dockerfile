@@ -1,12 +1,13 @@
-ARG EXTRA_PARAMS
-
 FROM ubuntu:18.04
+
+ARG EXTRAPARAMS="Default value"
+
 
 COPY printargs.sh /root/printargs.sh
 RUN chmod +x /root/printargs.sh
 
-ENV EXTRA_PARAMS=$EXTRA_PARAMS
-RUN echo Build with ${EXTRA_PARAMS}
+ENV EXTRAPARAMS=$EXTRAPARAMS
+RUN echo Build with ${EXTRAPARAMS}
 
 
-ENTRYPOINT /root/printargs.sh Hello $EXTRA_PARAMS
+ENTRYPOINT /root/printargs.sh Hello ${EXTRAPARAMS}
