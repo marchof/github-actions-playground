@@ -17,4 +17,4 @@ ENV JAVA_HOME=/opt/jdk \
     
 COPY --from=download /tmp/java/jdk ${JAVA_HOME}
 
-CMD ["jshell"]
+CMD ["/opt/jdk/bin/java"]
