@@ -8,9 +8,7 @@ RUN apk add curl && \
     mkdir /tmp/java && \
     gunzip /tmp/java.tar.gz && \
     tar x -f /tmp/java.tar -C /tmp/java && \
-    mv /tmp/java/* /tmp/java/jdk && \
-    /tmp/java/jdk/bin/java --version
-
+    mv /tmp/java/* /tmp/java/jdk
 
 FROM alpine
 
@@ -18,3 +16,5 @@ ENV JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin
     
 COPY --from=download /tmp/java/jdk ${JAVA_HOME}
+
+CMD ["jshell"]
