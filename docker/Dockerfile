@@ -9,5 +9,5 @@ RUN apk add curl && \
     gunzip /tmp/java.tar.gz && \
     tar x -f /tmp/java.tar -C /tmp/java && \
     mv /tmp/java/* /tmp/java/jdk && \
-    ls -al /tmp/java
+    /tmp/java/jdk/bin/java --version
    
