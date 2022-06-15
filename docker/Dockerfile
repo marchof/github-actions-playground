@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine AS download
 
 ENV JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin
@@ -10,3 +10,11 @@ RUN apk add curl && \
     tar x -f /tmp/java.tar -C /tmp/java && \
     mv /tmp/java/* /tmp/java/jdk && \
     /tmp/java/jdk/bin/java --version
+
+
+FROM alpine
+
+ENV JAVA_HOME=/opt/jdk \
+    PATH=${PATH}:/opt/jdk/bin
+    
+COPY --from=download /tmp/java/jdk ${JAVA_HOME}
