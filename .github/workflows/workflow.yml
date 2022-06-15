@@ -1,32 +1,21 @@
-name: Docker Parameters
+name: Java Docker Images
 
 on:
   push:
     branches:
-      - docker-params
+      - java-docker-images
 
 jobs:
 
   docker:
-  
-    strategy:
-      fail-fast: false
-      matrix:
-        scenario:
-          - name: No parameter
-            params: ''
-          - name: One parameter
-            params: 'World'
-          - name: Multiple parameters
-            params: 'World and Universe'
-  
+
     runs-on: ubuntu-latest
 
     name: ${{ matrix.scenario.name }}
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build and Run Docker Image
+    - name: Build Docker Image
       run: |
-        docker build --build-arg "EXTRAPARAMS=${{ matrix.scenario.params }}" -t testimage docker
-        docker run testimage
+        docker build -t jdkimage docker
+        docker container ls -s
