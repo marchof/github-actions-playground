@@ -19,4 +19,4 @@ jobs:
       run: |
         docker build -t jdkimage docker
         docker history jdkimage
-        docker run jdkimage --version
+        docker run jdkimage java --version
