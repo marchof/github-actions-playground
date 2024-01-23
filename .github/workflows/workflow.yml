@@ -47,8 +47,8 @@ jobs:
       fail-fast: false
       matrix:
         jdk:
-        - version: 22-ea
-        - version: 23-ea
+        - version: 22
+        - version: 23
 
     steps:
     - name:
