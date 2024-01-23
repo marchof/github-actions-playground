@@ -20,7 +20,17 @@ jobs:
         - distribution: temurin
           version: 17
         - distribution: temurin
+          version: 18
+        - distribution: temurin
+          version: 19
+        - distribution: temurin
+          version: 20
+        - distribution: temurin
           version: 21
+        - distribution: temurin
+          version: 22
+        - distribution: temurin
+          version: 23
 
     steps:
     - uses: actions/setup-java@v4
