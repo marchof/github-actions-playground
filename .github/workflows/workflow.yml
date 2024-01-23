@@ -28,9 +28,9 @@ jobs:
         - distribution: temurin
           version: 21
         - distribution: temurin
-          version: 22
+          version: 22-ea
         - distribution: temurin
-          version: 23
+          version: 23-ea
 
     steps:
     - uses: actions/setup-java@v4
