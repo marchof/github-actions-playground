@@ -1,0 +1,31 @@
+name: Java Versions
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - java-versions
+
+jobs:
+
+  print-java-versions:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        jdk:
+        - distribution: temurin
+          version: 11
+        - distribution: temurin
+          version: 17
+        - distribution: temurin
+          version: 21
+
+    steps:
+    - uses: actions/setup-java@v4
+      with:
+        distribution: ${{ matrix.jdk.distribution }}
+        java-version: ${{ matrix.jdk.version }}
+    - run: |
+        java --version
