@@ -39,3 +39,22 @@ jobs:
         java-version: ${{ matrix.jdk.version }}
     - run: |
         java --version
+
+  print-java-ea-versions:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        jdk:
+        - version: 22-ea
+        - version: 23-ea
+
+    steps:
+    - name:
+      uses: oracle-actions/setup-java@v1
+      with:
+        website: jdk.java.net
+        release: ${{ matrix.jdk.version }}
+    - run: |
+        java --version
