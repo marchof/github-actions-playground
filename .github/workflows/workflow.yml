@@ -27,32 +27,19 @@ jobs:
           version: 20
         - distribution: temurin
           version: 21
-        - distribution: temurin
-          version: 22-ea
-        - distribution: temurin
-          version: 23-ea
+        - distribution: openjdk
+          version: 22
+        - distribution: openjdk
+          version: 23
 
     steps:
     - uses: actions/setup-java@v4
+      if: ${{ matrix.jdk.distribution != 'openjdk' }}
       with:
         distribution: ${{ matrix.jdk.distribution }}
         java-version: ${{ matrix.jdk.version }}
-    - run: |
-        java --version
-
-  print-java-ea-versions:
-
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        jdk:
-        - version: 22
-        - version: 23
-
-    steps:
-    - name:
-      uses: oracle-actions/setup-java@v1
+    - uses: oracle-actions/setup-java@v1
+      if: ${{ matrix.jdk.distribution == 'openjdk' }}
       with:
         website: jdk.java.net
         release: ${{ matrix.jdk.version }}
